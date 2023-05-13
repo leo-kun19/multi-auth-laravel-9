@@ -18,7 +18,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    //public const HOME = '/dashboard';
+    public const HOME = '/dashboard';
     public static function home() {
         if(Auth::check() && Auth::user()->role_id==1) {
             return '/admin/dashboard';

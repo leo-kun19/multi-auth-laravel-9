@@ -10,4 +10,9 @@ class DashboardController extends Controller
     public function index() {
         return view('layouts.admin.dashboard');
     }
+
+    public function run() {
+        return view ('layouts.admin.addkategori');
+          }
+    
 }

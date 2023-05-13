@@ -1,59 +1,59 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
-
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
-
-        <form method="POST" action="{{ route('register') }}">
-            @csrf
-
-            <!-- Name -->
-            <div>
-                <x-label for="name" :value="__('Name')" />
-
-                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
-            </div>
-
-            <!-- Email Address -->
-            <div class="mt-4">
-                <x-label for="email" :value="__('Email')" />
-
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
-            </div>
-
-            <!-- Password -->
-            <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
-
-                <x-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="new-password" />
-            </div>
-
-            <!-- Confirm Password -->
-            <div class="mt-4">
-                <x-label for="password_confirmation" :value="__('Confirm Password')" />
-
-                <x-input id="password_confirmation" class="block mt-1 w-full"
-                                type="password"
-                                name="password_confirmation" required />
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
-
-                <x-button class="ml-4">
-                    {{ __('Register') }}
-                </x-button>
-            </div>
-        </form>
-    </x-auth-card>
-</x-guest-layout>
+@extends('frontend.frontend_master')
+@section('frontend_content')
+	<div class="reg-form">
+		<div class="container">
+			<div class="reg">
+				<h3>Register Now</h3>
+				<p>Welcome, please enter the following details to continue.</p>
+				<p>If you have previously registered with us, <a href="#">click here</a></p>
+                <form action="{{route('register')}}" method="POST">
+                    @csrf
+                       <ul>
+                           <li class="text-info">Full Name: </li>
+                           <li><input type="text" name="name" value="{{old('name')}}"></li>
+                           @error('name')
+                                   <small>{{ $message }}</small>
+                       @enderror 
+                       </ul>		 
+                       <ul>
+                           <li class="text-info">Email: </li>
+                           <li><input type="email" name="email" value="{{old('email')}}"></li>
+                           @error('email')
+                                   <small>{{ $message }}</small>
+                       @enderror 
+                       </ul>
+                       <ul>
+                           <li class="text-info">Password: </li>
+                           <li><input type="password" name="password" value=""></li>
+                           @error('password')
+                                   <small>{{ $message }}</small>
+                       @enderror 
+                       </ul>
+                       <ul>
+                           <li class="text-info">Mobile Number:</li>
+                           <li><input type="text" name="nomor_telepon" value="{{old('nomor_telepon')}}"></li>
+                           @error('nomor_telepon')
+                                   <small>{{ $message }}</small>
+                       @enderror 
+                       </ul>
+                       <ul>
+                           <li class="text-info">Alamat:</li>
+                           <li><input type="text" name="alamat" value="{{old('alamat')}}"></li>
+                           @error('alamat')
+                                   <small>{{ $message }}</small>
+                       @enderror 
+                       </ul>
+                       <ul>
+                        <li class="text-info">confirmation password:</li>
+                        <li><input type="password" name="password_confirmation"></li>
+    
+                    </ul>							
+                       <input type="submit" value="Register Now">
+                       <p class="click">By clicking this button, you are agree to my  <a href="#">Policy Terms and Conditions.</a></p>
+                      
+                   </form>
+			</div>
+		</div>
+	</div>
+       
+@endsection
